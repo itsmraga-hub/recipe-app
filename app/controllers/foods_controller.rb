@@ -20,16 +20,16 @@ class FoodsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   food = Food.find(params[:id])
-  #   if food.destroy
-  #     flash[:notice] = 'Food deleted'
-  #   else
-  #     flash[:alert] = 'Couldn\'t delete food'
-  #   end
+  def destroy
+    food = Food.find(params[:id])
+    if food.destroy
+      flash[:notice] = 'Food deleted'
+    else
+      flash[:alert] = 'Couldn\'t delete food'
+    end
 
-  #   redirect_to foods_path
-  # end
+    redirect_to foods_path
+  end
 
   def post_params
     params.require(:food).permit(:name, :measurement_unit, :price, :quantity)
