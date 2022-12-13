@@ -13,17 +13,10 @@ class RecipesController < ApplicationController
 
   def destroy
     recipe = Recipe.find(params[:id])
-
     unless recipe.user == current_user
-      return flash[:alert] =
-               'You do not have access to delete the Recipe belongs to other Users.'
+      return flash[:alert] ='Access Denied.'
     end
-
-    if recipe.destroy
-      flash[:notice] = 'Recipe was successfully deleted.'
-    else
-      flash[:alert] = 'Recipe deleting Failed. Please try again.'
-    end
+    flash[:notice] = 'Recipe deleted.' if recipe.destroy
     redirect_back(fallback_location: root_path)
   end
 
