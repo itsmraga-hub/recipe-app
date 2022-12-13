@@ -7,7 +7,7 @@ class FoodsController < ApplicationController
     @food = Food.find(params[:id])
   end
 
-  # def new
+  def new
     @new_food = Food.new
   end
 
@@ -27,11 +27,11 @@ class FoodsController < ApplicationController
     else
       flash[:alert] = 'Couldn\'t delete food'
     end
-
     redirect_to foods_path
   end
 
   def post_params
     params.require(:food).permit(:name, :measurement_unit, :price, :quantity)
   end
+
 end
