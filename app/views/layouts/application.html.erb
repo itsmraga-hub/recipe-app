@@ -11,6 +11,22 @@
   </head>
 
   <body>
+  <% if user_signed_in? %>
+    <header>
+      <p>Welcome <%= current_user.name %></p>
+      <ul>
+        <li>
+          <%= link_to 'foods', foods_path %>
+        </li>
+        <li>
+          <%= link_to 'recipes', recipes_path %>
+        </li>
+        <li>
+          <%= link_to 'public_recipes', public_recipes_path %>
+        </li>
+      </ul>
+    </header>
+  <% end %>
   <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
     <%= yield %>
