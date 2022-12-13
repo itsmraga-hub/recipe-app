@@ -2,7 +2,7 @@ class RecipeFoodsController < ApplicationController
   def new
     recipe = Recipe.find(params[:recipe_id])
     unless recipe.user == current_user
-      flash[:alert] ='Access Denied.'
+      flash[:alert] = 'Access Denied.'
       return redirect_to recipes_path
     end
     @recipe_food = RecipeFood.new
@@ -19,7 +19,7 @@ class RecipeFoodsController < ApplicationController
   def destroy
     recipe_food = RecipeFood.find(params[:id])
     unless recipe_food.recipe.user == current_user
-      flash[:alert] ='Access Denied.'
+      flash[:alert] = 'Access Denied.'
       return redirect_to recipes_path
     end
     flash[:notice] = 'Ingredient removed.' if recipe_food.destroy
