@@ -6,8 +6,10 @@ class Ability
 
     return unless user_signed_in?
 
+    return unless current_user && user
+
     can :read, :all
-    # can :destroy, Food, user:
-    # can :destroy, Recipe, user:
+    can :destroy, Food, user: current_user
+    can :destroy, Recipe, user: current_user
   end
 end
