@@ -14,7 +14,7 @@
             <%= button_to "Remove", recipe_path(recipe.id), method: :delete %>
           </div>
           <div >
-            <%= truncate(recipe.description, length: 100) %>
+            <%= truncate(recipe.description, length: 70) %>
           </div>
         </li>
       <% end %>
