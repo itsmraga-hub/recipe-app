@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   # root "articles#index"
   # root to: 'recipes#index'
   resources :users
-  resources :recipes
+  resources :recipes do
+    resources :recipe_foods
+  end
   resources :foods
   resources :public_recipes
 end
