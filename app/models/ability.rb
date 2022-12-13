@@ -8,6 +8,6 @@ class Ability
 
     can :read, :all
     can :destroy, Food, user: user
-    can :destroy, Recipe, user:
+    can :destroy, Recipe, user: user
   end
 end
