@@ -15,7 +15,7 @@
     <div>
       <% if @recipe.user == current_user %>
         <div>
-          <%= link_to "Generate Shopping List" %>
+          <%= link_to "Generate Shopping List", generate_index_path %>
         </div>
         <div>
           <%= link_to "Add Ingredient", new_recipe_recipe_food_path(@recipe) %>
