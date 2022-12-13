@@ -7,7 +7,7 @@ class Ability
     return unless user_signed_in?
 
     can :read, :all
-    can :destroy, Food, user: user
-    can :destroy, Recipe, user: user
+    can :destroy, Food, user:
+    can :destroy, Recipe, user:
   end
 end
