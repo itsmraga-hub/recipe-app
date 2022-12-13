@@ -1,0 +1,21 @@
+    <div>
+
+      <%= link_to "Add Recipe", new_recipe_path %>
+      <%= current_user.email%>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    </div>
+    <ul>
+      <% @recipes.each do |recipe| %>
+        <li >
+          <div>
+            <div>
+              <%= link_to recipe.name, recipe_path(recipe) %>
+            </div>
+            <%= button_to "Remove", recipe_path(recipe.id), method: :delete %>
+          </div>
+          <div >
+            <%= truncate(recipe.description, length: 100) %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
