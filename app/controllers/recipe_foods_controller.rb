@@ -1,12 +1,11 @@
 class RecipeFoodsController < ApplicationController
-
   def show
     @recipe_food = RecipeFood.find(params[:id])
     @recipe = @recipe_food.recipe
-    unless @recipe.user == current_user
-      flash[:alert] = 'Access Denied.'
-      return redirect_to recipes_path
-    end
+    return if @recipe.user == current_user
+
+    flash[:alert] = 'Access Denied.'
+    redirect_to recipes_path
   end
 
   def new
