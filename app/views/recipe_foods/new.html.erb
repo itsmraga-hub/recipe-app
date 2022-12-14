@@ -3,7 +3,7 @@
     <p>Add Ingredient</p>
     <div>
       <%= form.label :quantity, "Quantity", placeholder: 0 %>
-      <%= form.number_field :quantity %>
+      <%= form.number_field :quantity,required: true %>
     </div>
     <div>
       <%= form.label :food_id, "Food" %>
