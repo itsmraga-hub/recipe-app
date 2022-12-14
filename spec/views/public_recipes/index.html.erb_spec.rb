@@ -13,7 +13,7 @@ RSpec.describe 'public_recipes#index', type: :feature do
                              description: 'Lorem ipsum text', public: false)
     @recipe3 = Recipe.create(name: 'Recipe 3', preparation_time: 120, cooking_time: 90,
                              description: 'Lorem ipsum text', public: true)
-    @recipe1 = Recipe.create(name: 'Recipe 4', preparation_time: 60, cooking_time: 30,
+    @recipe4 = Recipe.create(name: 'Recipe 4', preparation_time: 60, cooking_time: 30,
                              description: 'Lorem ipsum text', public: false)
     @foods = Food.all
     @public_recipes = Recipe.all.where(public: true)
@@ -38,14 +38,7 @@ RSpec.describe 'public_recipes#index', type: :feature do
     end
   end
 
-  it 'Displays only two recipes with public set to true' do
-    expect(@public_recipes.length).to eq 2
+  it 'Displays the content \'Total food items\'' do
+    expect(page).to have_content('Total food items:')
   end
-
-  # it 'Redirects to recipe details page' do
-  #   @public_recipes.each do |recipe|
-  #     click_link recipe.name
-  #     expect(current_path).to match recipe_path(recipe)
-  #   end
-  # end
 end
