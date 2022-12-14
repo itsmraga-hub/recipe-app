@@ -53,15 +53,13 @@ class RecipeFoodsController < ApplicationController
       flash[:alert] = 'Access Denied.'
       return redirect_to recipes_path
     end
-    if @recipe_food.update(edit_recipe_params)
-      redirect_to recipe_path(@recipe), notice: 'Ingredient updated.'
-    else
-      render :edit
-    end
+    @recipe_food.update(edit_recipe_food_params)
+    flash[:notice] = 'Ingredient updated.'
+    redirect_to recipe_path(@recipe)
   end
 
-  def edit_recipe_params
-    params.require(:recipe_foods).permit(:quantity, :food_id)
+  def edit_recipe_food_params
+    params.require(:edit_recipe_food).permit(:quantity, :food_id)
   end
 
   private
