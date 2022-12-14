@@ -14,15 +14,15 @@
   <% if user_signed_in? %>
     <header>
       <p>Welcome <%= current_user.name %></p>
-      <ul>
+      <ul class="nav">
         <li>
-          <%= link_to 'foods', foods_path %>
+          <%= link_to 'Foods |', foods_path %>
         </li>
         <li>
-          <%= link_to 'recipes', recipes_path %>
+          <%= link_to 'Recipes |', recipes_path %>
         </li>
         <li>
-          <%= link_to 'public_recipes', public_recipes_path %>
+          <%= link_to 'Public recipes', public_recipes_path %>
         </li>
       </ul>
     </header>

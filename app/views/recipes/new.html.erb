@@ -1,5 +1,5 @@
-<div>
-  <%= form_with model: @recipe do |form| %>
+<div class="add-items recipe">
+  <%= form_with model: @recipe , class: "recipe-form" do |form| %>
     <h2>Add a New Recipe</h2>
     <div>
       <%= form.label :name, "Name" %>
@@ -25,7 +25,7 @@
       <%= form.radio_button :public, false %>
     </div>
     <div>
-      <%= form.submit "Add Recipe" %>
+      <%= form.submit "Add Recipe" , class: "submission" %>
     </div>
   <% end %>
 </div>

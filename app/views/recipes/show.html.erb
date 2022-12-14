@@ -1,29 +1,45 @@
-    <p><%= @recipe.name %></p>
-    <div >
-      <div>
-        <p>Preparation Time:</p>
-        <p><%= @recipe.preparation_time %> hours</p>
+    <div class="recipe-detailss">
+    <p class="recipe-name"><%= @recipe.name+" Recipe" %></p>
+      <div class="detail-item">
+        <p>Preparation Time: <%= @recipe.preparation_time.to_s + " Hours" %></p>
+        <div class="detail-public">
+        Public: &nbsp;
+        <%if @recipe.public? %>
+        <label class="switch">
+        <input type="checkbox" checked>
+        <span class="slider round"></span>
+        </label>
+        <%else%>
+        <label class="switch">
+        <input type="checkbox">
+        <span class="slider round"></span>
+        </label>
+        <%end%>
+        </div>
       </div>
+      </div>
+    <div class="detail-item">
+      <p>Cooking Time: <%= @recipe.cooking_time.to_s + " Hours" %></p>
     </div>
-    <div >
-      <p>Cooking Time:</p>
-      <p><%= @recipe.cooking_time %> hours</p>
-    </div>
+    <div class="detail-item">
     <p>Recipe Step:</p>
     <p><%= @recipe.description %></p>
+    </div>
 
-    <div>
+
+    <div class="general-add">
       <% if @recipe.user == current_user %>
-        <div>
+        <div class="submissions g-shopping">
           <%= link_to "Generate Shopping List", generate_index_path %>
         </div>
-        <div>
+        <div class="submissions g-gredients">
           <%= link_to "Add Ingredient", new_recipe_recipe_food_path(@recipe) %>
         </div>
       <% end %>
     </div>
+    <div class="separator"></div>
     <% if @recipe_foods.length >= 0 %>
-      <table>
+      <table class="t-border">
         <thead>
           <tr>
             <th>Food</th>
@@ -49,3 +65,4 @@
       </table>
     <% end %>
   </div>
+</div>
