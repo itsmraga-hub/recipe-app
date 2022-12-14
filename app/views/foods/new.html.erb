@@ -1,4 +1,4 @@
-<section>
+<section class="add-items food">
   <h2>Add new Food</h2>
 
 <%= form_with model: @new_food, url: foods_path do |f| %>
@@ -24,7 +24,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Add Food" %>
+    <%= f.submit "Add Food" , class: "submission" %>
   </div>
 <% end %>
 
