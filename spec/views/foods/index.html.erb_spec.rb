@@ -4,9 +4,9 @@ RSpec.describe 'foods#index', type: :feature do
   before(:each) do
     user = User.create!(name: 'William Raga', email: 'raga_0@gmail.com', password: '12345678')
     login_as(user, scope: :user)
-    @food_1 = Food.create(name: 'Nyama choma', measurement_unit: 'Kilogrammes', price: 800, quantity: 1)
-    @food_2 = Food.create(name: 'Chips', measurement_unit: 'Pounds', price: 150, quantity: 0.5)
-    @food_3 = Food.create(name: 'Banana bread', measurement_unit: 'Kilogrammes', price: 1000, quantity: 4)
+    @food1 = Food.create(name: 'Nyama choma', measurement_unit: 'Kilogrammes', price: 800, quantity: 1)
+    @food2 = Food.create(name: 'Chips', measurement_unit: 'Pounds', price: 150, quantity: 0.5)
+    @food3 = Food.create(name: 'Banana bread', measurement_unit: 'Kilogrammes', price: 1000, quantity: 4)
     @foods = Food.all
 
     visit foods_path
