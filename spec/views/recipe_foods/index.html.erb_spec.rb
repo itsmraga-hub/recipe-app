@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'public_recipes#index', type: :feature do
+RSpec.describe 'recipe #show', type: :feature do
   before(:all) do
     user = User.create!(name: 'Yunus Ali', email: 'Yunus@gmail.com', password: '123456789')
     login_as(user, scope: :user)
