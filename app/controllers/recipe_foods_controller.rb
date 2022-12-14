@@ -1,4 +1,14 @@
 class RecipeFoodsController < ApplicationController
+
+  def show
+    @recipe_food = RecipeFood.find(params[:id])
+    @recipe = @recipe_food.recipe
+    unless @recipe.user == current_user
+      flash[:alert] = 'Access Denied.'
+      return redirect_to recipes_path
+    end
+  end
+
   def new
     recipe = Recipe.find(params[:recipe_id])
     unless recipe.user == current_user
@@ -24,6 +34,34 @@ class RecipeFoodsController < ApplicationController
     end
     flash[:notice] = 'Ingredient removed.' if recipe_food.destroy
     redirect_back(fallback_location: root_path)
+  end
+
+  def edit
+    @recipe_food = RecipeFood.find(params[:id])
+    @recipe = @recipe_food.recipe
+    unless @recipe.user == current_user
+      flash[:alert] = 'Access Denied.'
+      return redirect_to recipes_path
+    end
+    @foods = current_user.foods
+  end
+
+  def update
+    @recipe_food = RecipeFood.find(params[:id])
+    @recipe = @recipe_food.recipe
+    unless @recipe.user == current_user
+      flash[:alert] = 'Access Denied.'
+      return redirect_to recipes_path
+    end
+    if @recipe_food.update(edit_recipe_params)
+      redirect_to recipe_path(@recipe), notice: 'Ingredient updated.'
+    else
+      render :edit
+    end
+  end
+
+  def edit_recipe_params
+    params.require(:recipe_foods).permit(:quantity, :food_id)
   end
 
   private
