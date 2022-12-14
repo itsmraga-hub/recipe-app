@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'public_recipes#index', type: :feature do
   before(:each) do
-    user = User.create!(name: 'Yunus Ali', email: 'raga_0@gmail.com', password: '12345678')
+    user = User.create!(name: 'Yunus Ali', email: 'Yunus@gmail.com', password: '123456789')
     login_as(user, scope: :user)
     @recipe1 = Recipe.create(name: 'Recipe 1', preparation_time: 60, cooking_time: 30,
                              description: 'Lorem ipsum text', public: true)
@@ -12,7 +12,7 @@ RSpec.describe 'public_recipes#index', type: :feature do
                              description: 'Lorem ipsum text', public: true)
     @recipe4 = Recipe.create(name: 'Recipe 4', preparation_time: 60, cooking_time: 30,
                              description: 'Lorem ipsum text', public: false)
-    @recipes=Recipe.all
+    @recipes = Recipe.all
     visit recipes_path
   end
 
@@ -30,4 +30,3 @@ RSpec.describe 'public_recipes#index', type: :feature do
     end
   end
 end
-
