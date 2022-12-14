@@ -69,6 +69,12 @@ table {
   border: solid #000 2px;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
 .recipe-details {
   display: flex;
   flex-direction: row;
