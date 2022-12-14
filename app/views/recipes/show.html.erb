@@ -30,7 +30,7 @@
     <div class="general-add">
       <% if @recipe.user == current_user %>
         <div class="submissions g-shopping">
-          <%= link_to "Generate Shopping List" %>
+          <%= link_to "Generate Shopping List", generate_index_path %>
         </div>
         <div class="submissions g-gredients">
           <%= link_to "Add Ingredient", new_recipe_recipe_food_path(@recipe) %>
