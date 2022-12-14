@@ -2,7 +2,6 @@ class PublicRecipesController < ApplicationController
   def index
     @recipes = Recipe.includes(:recipe_foods, :foods).order(created_at: :desc)
     @public_recipes = @recipes.select(&:public)
-    
 
     @total_price = []
     @public_recipes.each do |recipe|
