@@ -3,14 +3,18 @@ require 'rails_helper'
 RSpec.describe 'generate#index', type: :feature do
   before(:each) do
     @user = User.create!(name: 'William Raga', email: 'raga_0@gmail.com', password: '12345678')
-    login_as(@user, :scope => :user)
+    login_as(@user, scope: :user)
     @food_1 = Food.create(name: 'Nyama choma', measurement_unit: 'Kilogrammes', price: 800, quantity: 1)
     @food_2 = Food.create(name: 'Chips', measurement_unit: 'Pounds', price: 150, quantity: 0.5)
     @food_3 = Food.create(name: 'Banana bread', measurement_unit: 'Kilogrammes', price: 1000, quantity: 4)
-    @recipe_1 = Recipe.create(name: 'Recipe 1', preparation_time: 60, cooking_time: 30, description: 'Lorem ipsum text', public: true)
-    @recipe_2 = Recipe.create(name: 'Recipe 2', preparation_time: 30, cooking_time: 15, description: 'Lorem ipsum text', public: false)
-    @recipe_3 = Recipe.create(name: 'Recipe 3', preparation_time: 120, cooking_time: 90, description: 'Lorem ipsum text', public: true)
-    @recipe_1 = Recipe.create(name: 'Recipe 4', preparation_time: 60, cooking_time: 30, description: 'Lorem ipsum text', public: false)
+    @recipe_1 = Recipe.create(name: 'Recipe 1', preparation_time: 60, cooking_time: 30,
+                              description: 'Lorem ipsum text', public: true)
+    @recipe_2 = Recipe.create(name: 'Recipe 2', preparation_time: 30, cooking_time: 15,
+                              description: 'Lorem ipsum text', public: false)
+    @recipe_3 = Recipe.create(name: 'Recipe 3', preparation_time: 120, cooking_time: 90,
+                              description: 'Lorem ipsum text', public: true)
+    @recipe_1 = Recipe.create(name: 'Recipe 4', preparation_time: 60, cooking_time: 30,
+                              description: 'Lorem ipsum text', public: false)
     @foods = Food.all
 
     visit generate_index_path
@@ -32,7 +36,7 @@ RSpec.describe 'generate#index', type: :feature do
   it 'Displays the text \'Total value of food needed\'' do
     expect(page).to have_content('Total value of food needed')
   end
-  
+
   it 'Displays the text \'Food\'' do
     expect(page).to have_content('Food')
   end
